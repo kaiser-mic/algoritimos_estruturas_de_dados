@@ -6,13 +6,15 @@ from Carro import Carro
 class TelaCarro(TelaVeiculo):
     def __init__(self, titulo="tela do carro"):
         super().__init__(titulo)
+        self.setGeometry(450, 150, 300, 200)
 
-    def definirlayout(self):
-        super().definirlayout()
+    def definirLayout(self):
+        super().definirLayout()
         self.lblportas = QLabel("Qtd Portas: ")
         self.txtportas = QLineEdit(self)
         self.layout.addWidget(self.lblportas)
         self.layout.addWidget(self.txtportas)
+
     def salvar(self):
         modelo = self.txtmodelo.text()
         if modelo != "":
