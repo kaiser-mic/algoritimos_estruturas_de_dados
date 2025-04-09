@@ -4,7 +4,7 @@ from Veiculo import Veiculo
 
 
 class TelaVeiculo( QMainWindow ):
-    def __init__(self, titulo = "tela de veiculo"):
+    def __init__(self, titulo = "tela de veiculo",):
         super().__init__()
         self.setWindowTitle(titulo)
         self.setGeometry(100, 150, 300, 150)
