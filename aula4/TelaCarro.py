@@ -13,8 +13,6 @@ class TelaCarro(TelaVeiculo):
         self.txtportas = QLineEdit(self)
         self.layout.addWidget(self.lblportas)
         self.layout.addWidget(self.txtportas)
-
-
     def salvar(self):
         modelo = self.txtmodelo.text()
         if modelo != "":
