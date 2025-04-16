@@ -1,10 +1,11 @@
 import sys
 from PyQt5.QtWidgets import *
 from Categoria import Categoria
-
+from TelaCarro import TelaCarro
 
 class TelaCategoria( QMainWindow ):
-    def __init__(self, titulo = "tela de categoria", categorias = []):
+    def __init__(self, titulo = "tela de categoria", categorias = [], telaCar = None):
+        self.telaCarro = telaCar
         super().__init__()
         self.categorias  =categorias
         self.setWindowTitle(titulo)
@@ -25,6 +26,9 @@ class TelaCategoria( QMainWindow ):
             cat = Categoria(nome)
             self.categorias.append(cat)
             QMessageBox.information(self, "Categoria salva", str(cat))
+            if self.telaCarro is not None:
+                self.telaCarro.carregarCategorias()
+            self.txtnome.setText("")
             self.hide()
 
     def definirLayout(self):

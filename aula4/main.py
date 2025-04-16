@@ -1,12 +1,21 @@
 import sys
 from PyQt5.QtWidgets import QApplication
+
 from telaVeiculo import TelaVeiculo
 from TelaCarro import TelaCarro
-app = QApplication(sys.argv)
+from TelaCategoria import TelaCategoria
+from Categoria import Categoria
 
-telaVeiculo = TelaVeiculo("cadastro de veiculo")
-telaVeiculo.show()
+app = QApplication( sys.argv )
 
-telacarro = TelaCarro("cadastro de carro")
-telacarro.show()
-sys.exit(app.exec_())
+#telaVeiculo = TelaVeiculo( "Cadastro de Veículo")
+#telaVeiculo.show()
+
+categorias = []
+telaCat = TelaCategoria("Adicionar Categorias", categorias  )
+#telaCat.show()
+
+telaCarro = TelaCarro( "Cadastro de Carro", categorias, telaCat)
+telaCarro.show()
+#telaCat.telaCarro = telaCarro
+sys.exit( app.exec_() )

@@ -1,41 +1,57 @@
-from telaVeiculo import TelaVeiculo
-from PyQt5.QtWidgets import *
 import sys
+from PyQt5.QtWidgets import *
 from Carro import Carro
+from telaVeiculo import TelaVeiculo
+#from TelaCategoria import TelaCategoria
 
-class TelaCarro(TelaVeiculo):
-    def __init__(self, titulo="tela do carro", categorias = []):
+class TelaCarro( TelaVeiculo ):
+
+    def __init__(self, titulo = "Tela de Carro", categorias = [], telaCat = None ):
+        self.telaCategorias = telaCat
+        self.listaCategorias = categorias
+        self.telaCategorias.telaCarro= self
         super().__init__(titulo)
-        self.setGeometry(450, 150, 300, 200)
-        self.categorias = categorias
+        
+
     def definirLayout(self):
         super().definirLayout()
-        self.lblportas = QLabel("Qtd Portas: ")
-        self.txtportas = QLineEdit(self)
-        self.layout.addWidget(self.lblportas)
-        self.layout.addWidget(self.txtportas)
-        self.lblCategoria = QLabel("Categoria")
-        
-        self.layout.addWidget(self.lblCategoria)
+        self.lblPortas = QLabel( "Qtd Portas: ")
+        self.txtPortas = QLineEdit(self)
+        self.layout.addWidget( self.lblPortas )
+        self.layout.addWidget( self.txtPortas )
+
+        self.lblCategoria = QLabel("Categoria:")
+        self.layout.addWidget( self.lblCategoria)
 
         self.cmbCategoria = QComboBox(self)
-        self.cmbCategoria.addItem("Selecione...", None)
+        self.carregarCategorias()
+        self.layout.addWidget(self.cmbCategoria )
 
-        for cat in self.categorias:
-            self.cmbCategoria.addItem(cat.nome , cat)
-        self.layout.addWidget(self.cmbCategoria)
+        self.btnAddCategoria = QPushButton("Adicionar Categoria", self)
+        self.btnAddCategoria.clicked.connect( self.abrirTelaCategoria )
+        self.layout.addWidget( self.btnAddCategoria)
+
+    def carregarCategorias(self):
+        self.cmbCategoria.clear()
+        self.cmbCategoria.addItem( "Selecione...", None)
+        for cat in self.listaCategorias:
+            self.cmbCategoria.addItem( cat.nome , cat)
+
+    def abrirTelaCategoria(self):
+        self.telaCategorias.show()
 
     def salvar(self):
-        modelo = self.txtmodelo.text()
-        if modelo != "":
-            ano = self.txtano.text()
+        modelo = self.txtModelo.text() 
+        if modelo != "" and self.cmbCategoria.currentIndex != 0 :
+            ano = self.txtAno.text()
             valor = None
             if ano != "":
-                valor = int(ano)
+                valor = int( ano )
 
-            portas = self.txtportas.text()
+            portas = self.txtPortas.text()
             vPortas = None
             if portas != "":
-                vPortas = int(portas)
-            carro = Carro(modelo, ano, vPortas)
-            QMessageBox.information(self, "Carro Salvo", str(carro))
+                vPortas = int( portas ) 
+            cat = self.cmbCategoria.currentData()
+            carro = Carro(modelo, ano, vPortas, cat)
+            QMessageBox.information(self, "Carro Salvo", str(carro) )
