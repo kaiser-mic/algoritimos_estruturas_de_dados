@@ -4,10 +4,10 @@ Revisar parametro Cateogria
 
 Uma classe abstrata chamada de Produto que contém os atributos/propriedades: modelo, cor, preço e categoria. 
 
-Esta classe possui um método getInformacoes() que retorna todos os valores dos atributos. !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+Esta classe possui um método getInformacoes() que retorna todos os valores dos atributos. 
 
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Esta classe também possui um método abstrato cadastrar().
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Esta classe também possui um método abstrato cadastrar(). !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
 
