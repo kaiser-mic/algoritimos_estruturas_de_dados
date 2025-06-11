@@ -18,6 +18,9 @@ while op != 0:
         modelo = input("Digite o modelo do carro que será inserido na fila: ")
         ano = int(input("Digite o ano do carro que será inserido na fila: "))
         placa = input("Digite a placa do carro que será inserido na fila: ")
+        #carro1 = Carro(modelo, ano, placa)
+        #fila.add(carro1)
+
         fila.add(modelo, ano, placa)
     elif op ==2:
         fila.remover()
